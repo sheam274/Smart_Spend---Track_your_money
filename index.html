@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="SmartSpend - a modern 2026 expense tracker built with vanilla JS." />
+    <title>SmartSpend - Track your money</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="brand"><span class="dot"></span> SmartSpend</div>
+        <button id="themeBtn" class="ghost">🌙 Dark</button>
+    </header>
+
+    <main class="wrap">
+        <section class="cards">
+            <article class="card">
+                <p class="label">Income</p>
+                <h2 id="totalIncome" class="up">৳0</h2>
+            </article>
+            <article class="card">
+                <p class="label">Expense</p>
+                <h2 id="totalExpense" class="down">৳0</h2>
+            </article>
+            <article class="card highlight">
+                <p class="label">Balance</p>
+                <h2 id="balance">৳0</h2>
+            </article>
+        </section>
+
+        <section class="grid">
+            <form id="txForm" class="panel">
+                <h3>Add Transaction</h3>
+                <label>Title <input type="text" name="title" placeholder="e.g. Grocery" required /></label>
+                <label>Amount <input type="number" name="amount" min="1" step="1" placeholder="0" required /></label>
+                
+                <div class="row">
+                    <label>Type
+                        <select name="type" required>
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </label>
+                    <label>Category
+                        <select name="category" required>
+                            <option>Food</option>
+                            <option>Transport</option>
+                            <option>Bills</option>
+                            <option>Shopping</option>
+                            <option>Salary</option>
+                            <option>Other</option>
+                        </select>
+                    </label>
+                </div>
+                
+                <label>Date <input type="date" name="date" required /></label>
+                <button type="submit" class="primary">+ Add Transaction</button>
+            </form>
+
+            <div class="panel">
+                <h3>Category Breakdown</h3>
+                <div id="chart" class="chart"></div>
+                <p class="hint">Only expense categories are shown.</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="filterbar">
+                <h3>Transactions</h3>
+                <div class="filters">
+                    <select id="filterType" title="Filter by transaction type">
+                        <option value="all">All</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+                    <select id="filterCat" title="Filter by category">
+                        <option value="all">All categories</option>
+                        <option>Food</option>
+                        <option>Transport</option>
+                        <option>Bills</option>
+                        <option>Shopping</option>
+                        <option>Salary</option>
+                        <option>Other</option>
+                    </select>
+                    <input id="search" type="search" placeholder="Search title..." />
+                </div>
+            </div>
+            <ul id="txList" class="list"></ul>
+            <p id="empty" class="empty hidden">No transactions yet. Add your first one above.</p>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <p>&copy; 2026 SmartSpend - Built with vanilla HTML, CSS, JS.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
